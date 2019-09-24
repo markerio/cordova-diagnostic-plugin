@@ -9,17 +9,8 @@ const PLUGIN_ID = "cordova.plugins.diagnostic";
 const PREFERENCE_NAME = PLUGIN_ID + ".modules";
 
 const MODULES = [
-    "LOCATION",
     "WIFI",
-    "CAMERA",
-    "NOTIFICATIONS",
-    "MICROPHONE",
-    "CONTACTS",
-    "CALENDAR",
-    "REMINDERS",
-    "MOTION",
-    "NFC",
-    "EXTERNAL_STORAGE"
+    "CAMERA"
 ];
 
 const COMMENT_START = "<!--";
