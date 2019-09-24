@@ -27,8 +27,6 @@
         "phonegap",
         "diagnostic",
         "wifi",
-        "location",
-        "gps",
         "camera",
         "settings"
     ],
