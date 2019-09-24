@@ -34,29 +34,6 @@ interface Diagnostic {
     permissionStatus?: any;
 
     /**
-     * iOS ONLY
-     * Constants for requesting and reporting the various motion states.
-     * @type {Object}
-     */
-    motionStatus?: any;
-
-    /**
-     * iOS ONLY
-     * Location authorization mode
-     * @type {Object}
-     */
-    locationAuthorizationMode?: any;
-
-
-    /**
-     * ANDROID ONLY
-     * Constants for the various location modes on Android.
-     * @type {Object}
-     */
-    locationMode?: any;
-
-
-    /**
      * ANDROID ONLY
      * Constants for the various NFC power states.
      * @type {Object}
@@ -69,23 +46,6 @@ interface Diagnostic {
      * @type {Object}
      */
     cpuArchitecture?: any;
-
-    /**
-     * iOS ONLY
-     * Constants for requesting/reporting the various types of remote notification permission types on iOS devices.
-     * @type {Object}
-     */
-    remoteNotificationType?: any;
-
-    /**
-     * Checks if app is able to access device location.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isLocationAvailable: (
-        successCallback: (available: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
 
     /**
      * Checks if Wifi is available.
@@ -113,12 +73,6 @@ interface Diagnostic {
         externalStorageOrParams?: boolean|{}
     ) => void;
 
-
-    /**
-     * ANDROID and WINDOWS ONLY
-     * Displays the device location settings to allow user to enable location services/change location mode.
-     */
-    switchToLocationSettings?: () => void;
 
     /**
      * ANDROID and WINDOWS ONLY
@@ -166,55 +120,6 @@ interface Diagnostic {
     enableDebug?: (
         successCallback: () => void
     ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Returns true if the device setting for location is on. 
-     * On Android this returns true if Location Mode is switched on. 
-     * On iOS this returns true if Location Services is switched on.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isLocationEnabled?: (
-        successCallback: (enabled: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Checks if the application is authorized to use location.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isLocationAuthorized?: (
-        successCallback: (authorized: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Returns the location authorization status for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getLocationAuthorizationStatus?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Requests location authorization for the application.
-     * @param successCallback
-     * @param errorCallback
-     * @param mode - (iOS-only / optional) location authorization mode specified as a locationAuthorizationMode constant. If not specified, defaults to WHEN_IN_USE.
-     */
-    requestLocationAuthorization?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void,
-        mode?: string
-    ) => void;
-
 
     /**
      * ANDROID and iOS ONLY
@@ -268,105 +173,6 @@ interface Diagnostic {
 
     /**
      * ANDROID and iOS ONLY
-     * Checks if the application is authorized to use the microphone.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isMicrophoneAuthorized?: (
-        successCallback: (authorized: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Returns the microphone authorization status for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getMicrophoneAuthorizationStatus?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Requests microphone authorization for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    requestMicrophoneAuthorization?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Checks if the application is authorized to use contacts (address book).
-     * @param successCallback
-     * @param errorCallback
-     */
-    isContactsAuthorized?: (
-        successCallback: (authorized: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Returns the contacts authorization status for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getContactsAuthorizationStatus?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Requests contacts authorization for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    requestContactsAuthorization?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Checks if the application is authorized to use the calendar.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isCalendarAuthorized?: (
-        successCallback: (authorized: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Returns the calendar authorization status for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getCalendarAuthorizationStatus?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Requests calendar authorization for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    requestCalendarAuthorization?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
      * Opens settings page for this app.
      * On Android, this opens the "App Info" page in the Settings app.
      * On iOS, this opens the app settings page in the Settings app. This works only on iOS 8+ - iOS 7 and below will invoke the errorCallback.
@@ -375,19 +181,6 @@ interface Diagnostic {
         successCallback: () => void,
         errorCallback: (error: string) => void
     ) => void;
-
-
-    /**
-     * ANDROID and iOS ONLY
-     * Registers a function to be called when a change in Location state occurs. Pass in a falsey value to de-register the currently registered function.
-     * On Android, this occurs when the Location Mode is changed.
-     * On iOS, this occurs when location authorization status is changed. This can be triggered either by the user's response to a location permission authorization dialog, by the user turning on/off Location Services, or by the user changing the Location authorization state specifically for your app.
-     * @param successCallback
-     */
-    registerLocationStateChangeHandler?: (
-        successCallback: (state: string) => void
-    ) => void;
-
 
     /**
      * ANDROID ONLY
@@ -418,54 +211,6 @@ interface Diagnostic {
 
     /**
      * ANDROID ONLY
-     * Checks if high-accuracy locations are available to the app from GPS hardware.
-     * Returns true if Location mode is enabled and is set to "Device only" or "High accuracy" AND if the app is authorised to use location.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isGpsLocationAvailable?: (
-        successCallback: (available: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Checks if the device location setting is set to return high-accuracy locations from GPS hardware.
-     * Returns true if Location mode is enabled and is set to either Device only or High accuracy
-     * @param successCallback
-     * @param errorCallback
-     */
-    isGpsLocationEnabled?: (
-        successCallback: (enabled: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Checks if low-accuracy locations are available to the app from network triangulation/WiFi access points.
-     * Returns true if Location mode is enabled and is set to "Battery saving" or "High accuracy" AND if the app is authorised to use location.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isNetworkLocationAvailable?: (
-        successCallback: (available: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Checks if the device location setting is set to return high-accuracy locations from GPS hardware.
-     * Returns true if Location mode is enabled and is set to either Battery saving or High accuracy
-     * @param successCallback
-     * @param errorCallback
-     */
-    isNetworkLocationEnabled?: (
-        successCallback: (enabled: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
      * Checks if the device data roaming setting is enabled.
      * Returns true if data roaming is enabled.
      * @param successCallback
@@ -473,17 +218,6 @@ interface Diagnostic {
      */
     isDataRoamingEnabled?: (
         successCallback: (enabled: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Returns the current location mode setting for the device.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getLocationMode?: (
-        successCallback: (mode: string) => void,
         errorCallback: (error: string) => void
     ) => void;
 
@@ -554,95 +288,6 @@ interface Diagnostic {
         successCallback: (statuses: any) => void
     ) => void;
 
-
-
-    /**
-     * ANDROID ONLY
-     * Checks if the application is authorized to use external storage.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isExternalStorageAuthorized?: (
-        successCallback: (authorized: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Returns the authorisation status for runtime permission to use the external storage.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getExternalStorageAuthorizationStatus?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Requests authorisation for runtime permission to use the external storage.
-     * @param successCallback
-     * @param errorCallback
-     */
-    requestExternalStorageAuthorization?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Returns details of external SD card(s): absolute path, is writable, free space
-     * @param successCallback
-     * @param errorCallback
-     */
-    getExternalSdCardDetails?: (
-        successCallback: (status: any) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Checks if NFC hardware is present on device.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isNFCPresent?: (
-        successCallback: (present: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Checks if the device setting for NFC is switched on.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isNFCEnabled?: (
-        successCallback: (present: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     *  Checks if NFC is available to the app.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isNFCAvailable?: (
-        successCallback: (present: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Registers a function to be called when a change in NFC state occurs.
-     * Pass in a falsey value to de-register the currently registered function.
-     * @param successCallback
-     */
-    registerNFCStateChangeHandler?: (
-        successCallback: (state: string) => void
-    ) => void;
-
     /**
      * iOS ONLY
      * Checks if the application is authorized to use the Camera Roll in Photos app.
@@ -677,17 +322,6 @@ interface Diagnostic {
     ) => void;
 
     /**
-     * ANDROID and iOS ONLY
-     * Checks if remote (push) notifications are enabled.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isRemoteNotificationsEnabled?: (
-        successCallback: (enabled: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
      * ANDROID ONLY
      * Checks if ADB mode(debug mode) is enabled.
      * @param successCallback
@@ -706,87 +340,6 @@ interface Diagnostic {
      */
     isDeviceRooted?: (
         successCallback: (enabled: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * iOS ONLY
-     * Indicates if the app is registered for remote (push) notifications on the device.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isRegisteredForRemoteNotifications?: (
-        successCallback: (registered: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * iOS ONLY
-     * Indicates the current setting of notification types for the app in the Settings app.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getRemoteNotificationTypes?: (
-        successCallback: (types: any) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * iOS ONLY
-     * Returns the remote notifications authorization status for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getRemoteNotificationsAuthorizationStatus?: (
-        successCallbackOrParams?: (status: string) => void|{},
-        errorCallback?: (error: string) => void
-    ) => void;
-
-    /**
-     * iOS ONLY
-     * Requests remote notifications authorization for the application.
-     * @param successCallback
-     * @param errorCallback
-     * @param types
-     * @param omitRegistration
-     */
-    requestRemoteNotificationsAuthorization?: (
-        successCallbackOrParams?: (status: string) => void|{},
-        errorCallback?: (error: string) => void,
-        types?: string[],
-        omitRegistration?: boolean
-    ) => void;
-
-    /**
-     * iOS ONLY
-     * Checks if the application is authorized to use reminders.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isRemindersAuthorized?: (
-        successCallback: (authorized: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * iOS ONLY
-     * Returns the reminders authorization status for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getRemindersAuthorizationStatus?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * iOS ONLY
-     * Requests reminders authorization for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    requestRemindersAuthorization?: (
-        successCallback: (status: string) => void,
         errorCallback: (error: string) => void
     ) => void;
 
@@ -812,50 +365,6 @@ interface Diagnostic {
         errorCallback: (error: string) => void
     ) => void;
 
-
-    /**
-     * iOS ONLY
-     * Checks if motion tracking is available on the current device.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isMotionAvailable?: (
-        successCallback: (available: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * iOS ONLY
-     * Checks if it's possible to determine the outcome of a motion authorization request on the current device.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isMotionRequestOutcomeAvailable?: (
-        successCallback: (available: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * iOS ONLY
-     * Requests motion authorization for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    requestMotionAuthorization?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * iOS ONLY
-     * Checks motion authorization status for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getMotionAuthorizationStatus?: (
-        successCallback: (status: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
 }
 
 interface CordovaPlugins {
