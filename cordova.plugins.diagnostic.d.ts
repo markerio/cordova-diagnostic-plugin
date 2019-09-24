@@ -55,13 +55,6 @@ interface Diagnostic {
      */
     locationMode?: any;
 
-    /**
-     * ANDROID and iOS ONLY
-     * Constants for the various Bluetooth hardware states.
-     * @type {Object}
-     */
-    bluetoothState?: any;
-
 
     /**
      * ANDROID ONLY
@@ -120,16 +113,6 @@ interface Diagnostic {
         externalStorageOrParams?: boolean|{}
     ) => void;
 
-    /**
-     * Checks if Bluetooth is available to the app.
-     * Returns true if the device has Bluetooth capabilities AND if Bluetooth setting is switched on (same on Android, iOS and Windows 10 Mobile)
-     * @param successCallback
-     * @param errorCallback
-     */
-    isBluetoothAvailable: (
-        successCallback: (available: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
 
     /**
      * ANDROID and WINDOWS ONLY
@@ -143,11 +126,6 @@ interface Diagnostic {
      */
     switchToMobileDataSettings?: () => void;
 
-    /**
-     * ANDROID and WINDOWS ONLY
-     * Displays Bluetooth settings to allow user to enable Bluetooth.
-     */
-    switchToBluetoothSettings?: () => void;
 
     /**
      * ANDROID and WINDOWS ONLY
@@ -179,18 +157,6 @@ interface Diagnostic {
         state: boolean
     ) => void;
 
-    /**
-     * ANDROID and WINDOWS ONLY
-     * Enables/disables Bluetooth on the device.
-     * @param successCallback
-     * @param errorCallback
-     * @param state
-     */
-    setBluetoothState?: (
-        successCallback: (enabled: boolean) => void,
-        errorCallback: (error: string) => void,
-        state: boolean
-    ) => void;
 
     /**
      * ANDROID and iOS ONLY
@@ -410,25 +376,6 @@ interface Diagnostic {
         errorCallback: (error: string) => void
     ) => void;
 
-    /**
-     * ANDROID and iOS ONLY
-     * Returns the state of Bluetooth on the device.
-     * @param successCallback
-     * @param errorCallback
-     */
-    getBluetoothState?: (
-        successCallback: (state: string) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID and iOS ONLY
-     * Registers a function to be called when a change in Bluetooth state occurs. Pass in a falsey value to de-register the currently registered function.
-     * @param successCallback
-     */
-    registerBluetoothStateChangeHandler?: (
-        successCallback: (state: string) => void
-    ) => void;
 
     /**
      * ANDROID and iOS ONLY
@@ -607,49 +554,7 @@ interface Diagnostic {
         successCallback: (statuses: any) => void
     ) => void;
 
-    /**
-     * ANDROID ONLY
-     * Checks if the device setting for Bluetooth is switched on.
-     * @param successCallback
-     * @param errorCallback
-     */
-    isBluetoothEnabled?: (
-        successCallback: (enabled: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
 
-    /**
-     * ANDROID ONLY
-     * Checks if the device has Bluetooth capabilities.
-     * @param successCallback
-     * @param errorCallback
-     */
-    hasBluetoothSupport?: (
-        successCallback: (supported: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Checks if the device has Bluetooth Low Energy (LE) capabilities.
-     * @param successCallback
-     * @param errorCallback
-     */
-    hasBluetoothLESupport?: (
-        successCallback: (supported: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
-
-    /**
-     * ANDROID ONLY
-     * Checks if the device supports Bluetooth Low Energy (LE) Peripheral mode.
-     * @param successCallback
-     * @param errorCallback
-     */
-    hasBluetoothLEPeripheralSupport?: (
-        successCallback: (supported: boolean) => void,
-        errorCallback: (error: string) => void
-    ) => void;
 
     /**
      * ANDROID ONLY
@@ -907,16 +812,6 @@ interface Diagnostic {
         errorCallback: (error: string) => void
     ) => void;
 
-    /**
-     * iOS ONLY
-     * Requests Bluetooth authorization for the application.
-     * @param successCallback
-     * @param errorCallback
-     */
-    requestBluetoothAuthorization?: (
-        successCallback: () => void,
-        errorCallback: (error: string) => void
-    ) => void;
 
     /**
      * iOS ONLY
