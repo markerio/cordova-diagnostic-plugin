@@ -10,7 +10,6 @@ const PREFERENCE_NAME = PLUGIN_ID + ".modules";
 
 const MODULES = [
     "LOCATION",
-    "BLUETOOTH",
     "WIFI",
     "CAMERA",
     "NOTIFICATIONS",
